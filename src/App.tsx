@@ -1,5 +1,5 @@
 import React from 'react';
-//Test that Git repo work properly
+
 const App = () => {
     return (
         <>
