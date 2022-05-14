@@ -1,15 +1,13 @@
 import React from 'react';
 
-import classes from './App.module.css'
 import {Header} from "./components/layout/Header";
+import {Map} from "./components/Map/Map";
 
 const App = () => {
     return (
         <>
             <Header/>
-            <div className={classes.map}>
-                ...
-            </div>
+            <Map/>
         </>
     );
 }
