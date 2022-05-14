@@ -1,41 +1,4 @@
-header {
-    background-color: #969698;
-
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    color: white;
-}
-
-header h1 {
-    font-size: 20px;
-    font-weight: 200;
-}
-
 .map {
-    background-color: #28b625;
+    background-color: #305b30;
     height: calc(100vh - 49px);
-}
-
-.search {
-    display: flex;
-}
-
-.search input {
-    width: 13em;
-}
-
-.addAnnouncement {
-
-}
-
-button {
-    font-size: 0.5rem;
-    padding: 1px 30px;
-    background-color: #ddefdd;
-    color: black;
-    border: 0;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 2px;
 }
