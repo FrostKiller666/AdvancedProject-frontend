@@ -19,7 +19,7 @@ const Header = () => {
             <h1>
                 <strong>Mega </strong> Ogłoszenia
             </h1>
-            <CustomButton type={"button"}>Dodaj ogłoszenie</CustomButton>
+            <CustomButton to={'/ad'} type={"button"}>Dodaj ogłoszenie</CustomButton>
             <form className={classes.search} onSubmit={setSearchFormLocalState}>
                 <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
                 <CustomButton type={"submit"}>Szukaj</CustomButton>
