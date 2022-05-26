@@ -8,6 +8,7 @@ interface Props {
     type: "button" | "submit" | "reset" | undefined;
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
     to?: string;
+    className?: string;
 }
 
 const CustomButton = (props: Props) => {
@@ -15,7 +16,7 @@ const CustomButton = (props: Props) => {
         props.to
             ? <Link className={`${classes.button} ${classes.link}`} to={props.to}>{props.children}</Link>
             : <button
-                className={classes.button}
+                className={`${classes.button} ${props.className}`}
                 onClick={props.onClick}
                 type={props.type || 'button'}
             >

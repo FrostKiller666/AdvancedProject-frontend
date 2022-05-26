@@ -1,0 +1,37 @@
+.addForm {
+    margin: 0 auto;
+    width: 620px;
+}
+
+.addForm h2 {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.addForm label {
+    font-weight: bold;
+}
+
+.addForm input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.addForm textarea {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.button {
+    height: 2rem;
+    width: 9rem;
+    position: relative;
+    float: right;
+    left: -37%;
+    font-size: 9px;
+}

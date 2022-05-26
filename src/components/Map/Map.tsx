@@ -12,9 +12,6 @@ import {SingleAdMap} from "./SingleAdMap";
 const Map = () => {
     const {search} = useContext(SearchContext);
     const [ads, setAds] = useState<SimpleAdEntity[]>([]);
-    // useEffect(() => {
-    //
-    // }, [search]);
 
     useEffect(() => {
         (async () => {
