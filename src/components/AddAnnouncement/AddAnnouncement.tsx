@@ -3,6 +3,7 @@ import React, {SyntheticEvent, useState} from "react";
 import classes from './AddAnnouncement.module.css';
 import {CustomButton} from "../UI/CustomButton";
 import {geocoding} from "../../utils/geocoding";
+import {apiUrl} from "../../config/api";
 
 const AddAnnouncement = () => {
     const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ const AddAnnouncement = () => {
         try {
             const {lat, lon} = await geocoding(form.address);
 
-            const res = await fetch('http://localhost:3001/ad', {
+            const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

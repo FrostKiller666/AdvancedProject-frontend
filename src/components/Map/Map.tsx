@@ -8,6 +8,7 @@ import "./LeafletMap.css";
 import classes from "./Map.module.css";
 import {SearchContext} from "../../contexts/search.context";
 import {SingleAdMap} from "./SingleAdMap";
+import {apiUrl} from "../../config/api";
 
 const Map = () => {
     const {search} = useContext(SearchContext);
@@ -16,10 +17,15 @@ const Map = () => {
     useEffect(() => {
         (async () => {
 
-            const res = await fetch(`http://localhost:3001/ad/search/${search}`);
+            const res = await fetch(`${apiUrl}/ad/search/${search}`);
             const data = await res.json();
 
-            setAds(data);
+            if (data === null) {
+                setAds([]);
+            } else {
+                setAds(data);
+            }
+
         })();
     }, [search]);
 
