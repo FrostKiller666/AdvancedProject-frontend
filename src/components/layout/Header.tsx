@@ -4,6 +4,7 @@ import {CustomButton} from "../UI/CustomButton";
 import {SearchContext} from "../../contexts/search.context";
 
 import classes from "./Header.module.css";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const {setSearch} = useContext(SearchContext);
@@ -17,7 +18,7 @@ const Header = () => {
     return (
         <header>
             <h1>
-                <strong>Mega </strong> Ogłoszenia
+                <Link className={classes.link} to='/'><strong>Mega </strong> Ogłoszenia</Link>
             </h1>
             <CustomButton to={'/add'} type={"button"}>Dodaj ogłoszenie</CustomButton>
             <form className={classes.search} onSubmit={setSearchFormLocalState}>

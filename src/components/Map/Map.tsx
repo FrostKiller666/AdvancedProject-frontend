@@ -32,7 +32,7 @@ const Map = () => {
     return (
         <div className={classes.map}>
             {/*<h1>Search for: {search}</h1>*/}
-            <MapContainer center={[52.2330653, 20.9211125]} zoom={10}>
+            <MapContainer center={[52.2330653, 20.9211125]} zoom={10} preferCanvas={true}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> & contributors'
