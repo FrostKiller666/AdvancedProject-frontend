@@ -25,7 +25,7 @@ const AddAnnouncement = () => {
         setLoading(true);
 
         try {
-            const {lat, lon} = await geocoding(form.address);
+            const {lat, lon} = await geocoding(form.postalCode, form.city, form.streetAddress, form.numberStreet);
 
             const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
