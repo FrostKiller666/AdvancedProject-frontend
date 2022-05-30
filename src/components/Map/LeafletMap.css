@@ -2,3 +2,50 @@
     height: 100%;
 }
 
+.leaflet-popup-content-wrapper {
+    background-color: #282D35 !important;
+    color: whitesmoke !important;
+
+}
+
+.leaflet-popup-tip {
+    background-color: #0a738d !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #61DAFB !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+    color: #49a2bb !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:active {
+    color: #3b8296 !important;
+}
+
+.leaflet-bar a {
+    background-color: #282D35 !important;
+    color: #61DAFB !important;
+}
+.leaflet-bar a:hover {
+    background-color: #414955 !important;
+    color: #61DAFB !important;
+}
+.btn-primary{
+    background-color: #0a738d !important;
+    color: whitesmoke !important;
+    border-color: #0a738d !important;
+}
+
+.btn-primary:hover {
+    background-color: #085669 !important;
+    color: whitesmoke !important;
+    border-color: #085669 !important;
+}
+.btn-primary:active
+{
+    background-color: #063d4b !important;
+    color: whitesmoke !important;
+        border-color: #063d4b !important;
+}
