@@ -13,7 +13,6 @@ const AddAnnouncement = () => {
         description: '',
         price: 0,
         url: '',
-        address: '',
         streetAddress: '',
         numberStreet: '',
         postalCode: '',
@@ -26,6 +25,7 @@ const AddAnnouncement = () => {
 
         try {
             const {lat, lon} = await geocoding(form.postalCode, form.city, form.streetAddress, form.numberStreet);
+            const {name, description, price, url, streetAddress, numberStreet, postalCode, city} = form;
 
             const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
@@ -33,12 +33,31 @@ const AddAnnouncement = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...form,
+                    name,
+                    description,
+                    price,
+                    url,
                     lat,
                     lon
                 }),
             });
+
+            const resAddress = await fetch(`${apiUrl}/ad/address`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    streetAddress,
+                    numberStreet,
+                    postalCode,
+                    city,
+                }),
+            });
+
             const data = await res.json();
+            const dataAddress = await resAddress.json();
+            console.log(dataAddress);
             setId(data.id);
         } finally {
             setLoading(false);
@@ -46,7 +65,7 @@ const AddAnnouncement = () => {
 
     }
 
-    const formChangeHandler = (key: string, value: any) => {
+    const formChangeHandler = (key: string, value: any): void => {
         setForm((form) => ({
             ...form,
             [key]: value,
