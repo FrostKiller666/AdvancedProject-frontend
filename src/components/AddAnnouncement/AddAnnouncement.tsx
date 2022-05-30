@@ -25,7 +25,6 @@ const AddAnnouncement = () => {
 
         try {
             const {lat, lon} = await geocoding(form.postalCode, form.city, form.streetAddress, form.numberStreet);
-            const {name, description, price, url, streetAddress, numberStreet, postalCode, city} = form;
 
             const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
@@ -33,31 +32,17 @@ const AddAnnouncement = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    name,
-                    description,
-                    price,
-                    url,
+                    ...form,
                     lat,
                     lon
                 }),
             });
 
-            const resAddress = await fetch(`${apiUrl}/ad/address`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    streetAddress,
-                    numberStreet,
-                    postalCode,
-                    city,
-                }),
-            });
 
             const data = await res.json();
-            const dataAddress = await resAddress.json();
-            console.log(dataAddress);
+
+            console.log(form.city);
+
             setId(data.id);
         } finally {
             setLoading(false);

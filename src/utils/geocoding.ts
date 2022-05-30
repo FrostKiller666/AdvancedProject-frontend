@@ -5,6 +5,7 @@ export const geocoding = async (postalCode: string, city: string, streetAddress?
     const res = await fetch(encodeURI(`https://nominatim.openstreetmap.org/search?format=json&q=${postalCode} ${city} ?${streetAddress} ?${numberStreet}`));
     const data = await res.json();
 
+    console.log(data[0].display_name);
 
     if (streetAddress === '') {
         const lat = parseFloat(data[data.length - 1].lat);
