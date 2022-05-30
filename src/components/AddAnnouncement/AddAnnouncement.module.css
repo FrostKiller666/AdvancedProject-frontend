@@ -27,6 +27,30 @@
     padding: 10px;
 }
 
+.addressFormat {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.addressFormatNumberStreet {
+    width: 25%;
+}
+
+.addressFormatNumberHouse {
+    width: 25%;
+
+}
+
+.addressFormatCity {
+    width: 25%;
+
+}
+
+.addressFormaZipCode {
+    width: 25%;
+}
+
 .button {
     height: 2rem;
     width: 9rem;

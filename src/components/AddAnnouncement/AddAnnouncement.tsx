@@ -14,6 +14,10 @@ const AddAnnouncement = () => {
         price: 0,
         url: '',
         address: '',
+        streetAddress: '',
+        numberStreet: '',
+        postalCode: '',
+        city: '',
     });
 
     const AddAdToMap = async (e: SyntheticEvent) => {
@@ -82,18 +86,37 @@ const AddAnnouncement = () => {
             </p>
             <p>
                 <label>
-                    Link: <br/>
+                    Link do ogłoszenia: <br/>
                     <input type="url" name={'url'} maxLength={99} value={form.url}
                            onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
                 </label>
             </p>
             <p>
                 <label>
-                    Address: <br/>
-                    <input type="text" name={'address'} value={form.address}
+                    Nazwa ulicy: <br/>
+                    <input type="text" name={'streetAddress'} minLength={3} maxLength={56} value={form.streetAddress}
                            onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
                 </label>
             </p>
+
+            <p className={classes.addressFormat}>
+                <label className={classes.addressFormatNumberHouse}>
+                    Numer domu/mieszkania: <br/>
+                    <input type="text" name={'numberStreet'} minLength={1} maxLength={7} value={form.numberStreet}
+                           onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                </label>
+                <label className={classes.addressFormaZipCode}>
+                    <br/>Kod pocztowy: <br/>
+                    <input type="text" name={'postalCode'} required minLength={5} maxLength={6} value={form.postalCode}
+                           onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                </label>
+                <label className={classes.addressFormatCity}>
+                    <br/>Miasto: <br/>
+                    <input type="text" name={'city'} required minLength={2} maxLength={30} value={form.city}
+                           onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                </label>
+            </p>
+
             <CustomButton type={'submit'} className={classes.button}> Dodaj </CustomButton>
         </form>
     );
