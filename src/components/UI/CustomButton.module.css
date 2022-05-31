@@ -1,8 +1,8 @@
 .button {
-    font-size: 0.5rem;
+    font-size: 1rem;
     padding: 1px 30px;
-    background-color: #ddefdd;
-    color: black;
+    background-color: #0a738d;
+    color: rgb(255, 255, 255);
     border: 0;
     text-transform: uppercase;
     font-weight: bold;
@@ -10,14 +10,19 @@
 }
 
 .button:hover {
-    background-color: #c4e5c4;
+    background-color: #085669;
+    color: rgb(255, 255, 255);
 }
 
 .button:active {
-    background: #9ce09c;
+    background: #063d4b;
 }
 
 .button:focus {
     outline: none;
 }
 
+.link {
+    text-decoration: none;
+    padding-top: 0.5rem;
+}
