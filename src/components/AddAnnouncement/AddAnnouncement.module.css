@@ -1,7 +1,10 @@
+
 .addForm {
     margin: 0 auto;
-    width: 620px;
+    width: 900px;
+    background-color: #4b5463;
 }
+
 
 .addForm h2 {
     margin-top: 15px;
@@ -17,15 +20,10 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 15px;
-    padding: 10px;
+    
 }
 
-.addForm textarea {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    padding: 10px;
-}
+
 
 .addressFormat {
     display: inline-flex;
@@ -33,29 +31,16 @@
     width: 100%;
 }
 
-.addressFormatNumberStreet {
-    width: 25%;
-}
 
-.addressFormatNumberHouse {
-    width: 25%;
-
-}
-
-.addressFormatCity {
-    width: 25%;
-
-}
-
-.addressFormaZipCode {
-    width: 25%;
-}
 
 .button {
     height: 2rem;
-    width: 9rem;
+    width: 10rem;
     position: relative;
-    float: right;
-    left: -37%;
-    font-size: 9px;
+   margin-bottom: 15px;
+    font-size: 12px;
+}
+
+textarea{
+    resize: none;
 }

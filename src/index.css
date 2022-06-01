@@ -2,4 +2,19 @@
     margin: 0;
     padding: 0;
     font-family: Calibri;
+    
+}
+.container-fluid{
+    background-color:#4b5463;
+    margin: 0 auto;
+    padding: 0 AUTO;
+}
+
+#root{
+    background-color:#4b5463;
+    
+    
+}
+body{
+    background-color: #4b5463;
 }

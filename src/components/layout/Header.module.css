@@ -1,5 +1,5 @@
 header {
-    background-color: #969698;
+    background-color: #282D35;
     display: flex;
     justify-content: space-between;
     padding: 13px;
@@ -28,6 +28,20 @@ button {
     text-transform: uppercase;
     font-weight: bold;
     border-radius: 2px;
+    white-space: normal;
+}
+input
+{
+    padding: 10px 30px;
+        display: inline-block;
+        border-radius: 5px;
+        white-space: normal;
+}
+
+.link {
+    text-decoration: none;
+    color: #61DAFB;
+    font-size: 1.3em;
 }
 
 .link {
