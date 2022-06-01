@@ -4,7 +4,9 @@ import classes from './AddAnnouncement.module.css';
 import {CustomButton} from "../UI/CustomButton";
 import {geocoding} from "../../utils/geocoding";
 import {apiUrl} from "../../config/api";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const AddAnnouncement = () => {
     const [loading, setLoading] = useState(false);
@@ -14,7 +16,6 @@ const AddAnnouncement = () => {
         description: '',
         price: 0,
         url: '',
-        address: '',
         streetAddress: '',
         numberStreet: '',
         postalCode: '',
@@ -39,7 +40,9 @@ const AddAnnouncement = () => {
                     lon
                 }),
             });
+
             const data = await res.json();
+
             setId(data.id);
         } finally {
             setLoading(false);
@@ -47,7 +50,8 @@ const AddAnnouncement = () => {
 
     }
 
-    const formChangeHandler = (key: string, value: any) => {
+
+    const formChangeHandler = (key: string, value: any): void => {
         setForm((form) => ({
             ...form,
             [key]: value,
@@ -62,6 +66,7 @@ const AddAnnouncement = () => {
     }
 
     return (
+
         <div className="col-md-4 d-block mx-auto">
             
         
@@ -139,9 +144,7 @@ const AddAnnouncement = () => {
             <CustomButton type={'submit'} className={classes.button}> Dodaj </CustomButton>
             </div>
         </form>
-        </div>
-        
-        
+        </div>         
     );
 }
 

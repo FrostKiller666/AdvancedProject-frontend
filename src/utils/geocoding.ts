@@ -6,6 +6,9 @@ export const geocoding = async (postalCode: string, city: string, streetAddress?
     const data = await res.json();
 
 
+    console.log(data[0].display_name);
+
+
     if (streetAddress === '') {
         const lat = parseFloat(data[data.length - 1].lat);
         const lon = parseFloat(data[data.length - 1].lon);
