@@ -1,4 +1,5 @@
 import React, {SyntheticEvent, useContext, useState} from 'react';
+import {FaUserCircle} from 'react-icons/fa';
 
 import {CustomButton} from "../UI/CustomButton";
 import {SearchContext} from "../../contexts/search.context";
@@ -20,11 +21,12 @@ const Header = () => {
             <h1>
                 <Link className={classes.link} to='/'><strong>Mega </strong> Ogłoszenia</Link>
             </h1>
-            <CustomButton to={'/add'} type={"button"}>Dodaj ogłoszenie</CustomButton>
             <form className={classes.search} onSubmit={setSearchFormLocalState}>
                 <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
                 <CustomButton type={"submit"}>Szukaj</CustomButton>
             </form>
+            <h2>Liczba aktualnych ogłoszeń to: </h2>
+            <FaUserCircle/>
         </header>
     );
 }
