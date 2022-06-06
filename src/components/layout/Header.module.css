@@ -48,3 +48,17 @@ input
     text-decoration: none;
     color: white;
 }
+
+.userIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.customContainer {
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+
+.customDropDown {
+    margin-left: 43rem;
+}

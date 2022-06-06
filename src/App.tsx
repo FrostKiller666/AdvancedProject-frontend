@@ -6,6 +6,8 @@ import {Map} from "./components/Map/Map";
 import {SearchContext} from "./contexts/search.context";
 
 import {AddAnnouncement} from "./components/AddAnnouncement/AddAnnouncement";
+import {LoginAnnouncement} from "./components/LoginAnnoucement/LoginAnnouncement";
+import {RegisterAnnouncement} from "./components/RegisterAnnouncement/RegisterAnnouncement";
 
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
                 <Routes>
                     <Route path={'/'} element={<Map/>}/>
                     <Route path={'/add'} element={<AddAnnouncement/>}/>
+                    <Route path={'/login'} element={<LoginAnnouncement/>}/>
+                    <Route path={'/add/user/'} element={<RegisterAnnouncement/>}/>
                 </Routes>
             </SearchContext.Provider>
         </>

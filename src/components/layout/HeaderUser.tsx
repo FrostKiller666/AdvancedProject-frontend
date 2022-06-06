@@ -8,7 +8,7 @@ import classes from "./Header.module.css";
 import {Link} from "react-router-dom";
 
 
-const Header = () => {
+const HeaderUser = () => {
     const {setSearch} = useContext(SearchContext);
     const [inputValue, setInputValue] = useState('');
 
@@ -19,9 +19,8 @@ const Header = () => {
 
 
     return (
-        <Navbar variant="dark" bg="dark" expand="lg" className={classes.customContainer}>
+        <Navbar variant="dark" bg="dark" expand="lg">
             <Container fluid>
-
                 <Navbar.Brand as={Link} to='/'><strong>Mega</strong> Ogłoszenia</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbar-dark-example"/>
                 <Navbar.Collapse id="navbar-dark-example">
@@ -29,27 +28,25 @@ const Header = () => {
                         <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
                         <CustomButton type={"submit"}>Szukaj</CustomButton>
                     </form>
-
+                    <CustomButton to={'/add'} type={"button"}>Dodaj ogłoszenie</CustomButton>
                     <Nav>
                         <NavDropdown
-                            className={classes.customDropDown}
-                            drop={'start'}
                             id="nav-dropdown-dark-example"
                             title={<FaUserCircle className={classes.userIcon}/>}
                             menuVariant="dark"
                         >
-                            <NavDropdown.Item as={Link} to='/login'> Zaloguj</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/add/user/'>Zarejestruj</NavDropdown.Item>
-
+                            <NavDropdown.Item as={Link} to='/'>Twoje Dane</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/'>Twoje Ogłoszenia</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item as={Link} to='/'>Wyloguj</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
-
             </Container>
         </Navbar>
     );
 }
 
 export {
-    Header,
+    HeaderUser,
 }
