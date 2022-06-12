@@ -56,9 +56,11 @@ input
 
 .customContainer {
     margin-top: -8px;
-    margin-bottom: -8px;
+    padding-bottom: 0 !important;
 }
 
 .customDropDown {
     margin-left: 43rem;
 }
+
+

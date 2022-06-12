@@ -26,7 +26,7 @@ const LoginAnnouncement = () => {
 
                 <Form.Group as={Row} className="mb-3">
                     <Col sm={{span: 10, offset: 2}}>
-                        <Button type="submit">Zarejestruj</Button>
+                        <Button type="submit">Zaloguj</Button>
                     </Col>
                 </Form.Group>
             </Form>

@@ -5,9 +5,9 @@ const RegisterAnnouncement = () => {
     return (
         <Container className={'w-50'}>
             <Form>
-                <h2 className={"mt-4"}>Zarehestruj się: </h2>
+                <h2 className={"mt-4"}>Zarejestruj się: </h2>
 
-                <Form.Group as={Row} className="mb-3 mt-3" controlId="formHorizontalEmail">
+                <Form.Group as={Row} className="mb-3 mt-3" controlId="formHorizontalUsername">
                     <Form.Label column sm={2}>
                         Nazwa użytkownika:
                     </Form.Label>
@@ -34,7 +34,7 @@ const RegisterAnnouncement = () => {
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalRepeatPassword">
                     <Form.Label column sm={2}>
                         Powtórz Hasło:
                     </Form.Label>
@@ -45,7 +45,7 @@ const RegisterAnnouncement = () => {
 
                 <Form.Group as={Row} className="mb-3">
                     <Col sm={{span: 10, offset: 2}}>
-                        <Button type="submit">Zaloguj</Button>
+                        <Button type="submit">Zarejestruj</Button>
                     </Col>
                 </Form.Group>
             </Form>
