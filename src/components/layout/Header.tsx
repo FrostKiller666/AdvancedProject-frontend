@@ -37,8 +37,8 @@ const Header = () => {
                             title={<FaUserCircle className={classes.userIcon}/>}
                             menuVariant="dark"
                         >
-                            <NavDropdown.Item as={Link} to='/login'> Zaloguj</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/add/user/'>Zarejestruj</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/user/login'> Zaloguj</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/user/register'>Zarejestruj</NavDropdown.Item>
 
                         </NavDropdown>
                     </Nav>
