@@ -1,9 +1,32 @@
-import React, {SyntheticEvent, useState} from "react";
+import React, {SyntheticEvent, useRef, useState} from "react";
+import {Message, SubmitHandler, useForm, ValidationRule} from "react-hook-form";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 import {apiUrl} from "../../config/api";
 
+interface FormRegisterType {
+    username: string;
+    email: string;
+    password: string;
+    RePassword: string;
+}
+
+type RegisterOptions = Partial<{
+    required: Message | ValidationRule<boolean>;
+    min: ValidationRule<number | string>;
+    max: ValidationRule<number | string>;
+    maxLength: ValidationRule<number | string>;
+    minLength: ValidationRule<number | string>;
+    pattern: ValidationRule<RegExp>;
+    //validate?: Validate | Record<string, Validate>;
+}>;
+
 const RegisterAnnouncement = () => {
+    const {register, formState: {errors}, handleSubmit, watch} = useForm<FormRegisterType>();
+    const onSubmit: SubmitHandler<FormRegisterType> = data => console.log(data);
+    const password = useRef<HTMLInputElement | string>();
+    password.current = watch("password", "");
+
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('');
     const [checkPw, setCheckPw] = useState(false);
@@ -61,7 +84,7 @@ const RegisterAnnouncement = () => {
 
     return (
         <Container className={'w-50'}>
-            <Form onSubmit={AddUser}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 <h2 className={"mt-4"}>Zarejestruj się: </h2>
 
                 <Form.Group as={Row} className="mb-3 mt-3" controlId="formHorizontalUsername">
@@ -90,8 +113,15 @@ const RegisterAnnouncement = () => {
                         Hasło:
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="password" placeholder="Hasło" name={'password'} value={form.password}
-                                      onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                        <Form.Control type="password" placeholder="Hasło" name={'password'}
+                                      ref={register<RegisterOptions>({
+                                          required: "You must specify a password",
+                                          minLength: {
+                                              value: 8,
+                                              message: "Password must have at least 8 characters"
+                                          }
+                                      })}/>
+                        {errors.password && <p>{errors.password.message}</p>}
                     </Col>
                 </Form.Group>
 
