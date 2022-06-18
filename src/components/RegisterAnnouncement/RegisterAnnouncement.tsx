@@ -1,5 +1,5 @@
-import React, {SyntheticEvent, useRef, useState} from "react";
-import {Message, SubmitHandler, useForm, ValidationRule} from "react-hook-form";
+import React, {useRef, useState} from "react";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 import {apiUrl} from "../../config/api";
@@ -11,76 +11,43 @@ interface FormRegisterType {
     RePassword: string;
 }
 
-type RegisterOptions = Partial<{
-    required: Message | ValidationRule<boolean>;
-    min: ValidationRule<number | string>;
-    max: ValidationRule<number | string>;
-    maxLength: ValidationRule<number | string>;
-    minLength: ValidationRule<number | string>;
-    pattern: ValidationRule<RegExp>;
-    //validate?: Validate | Record<string, Validate>;
-}>;
-
 const RegisterAnnouncement = () => {
     const {register, formState: {errors}, handleSubmit, watch} = useForm<FormRegisterType>();
-    const onSubmit: SubmitHandler<FormRegisterType> = data => console.log(data);
     const password = useRef<HTMLInputElement | string>();
     password.current = watch("password", "");
 
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('');
-    const [checkPw, setCheckPw] = useState(false);
-    const [rePassword, setRePassword] = useState('');
-    const [form, setForm] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
 
-    const formChangeHandler = (key: string, value: any): void => {
-        setForm((form) => ({
-            ...form,
-            [key]: value,
-        }));
-    }
-
-    const AddUser = async (e: SyntheticEvent) => {
-        e.preventDefault();
+    const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
+        const {RePassword, ...respondeData} = data;
         setLoading(true);
 
-        if (loading) {
-            return <h2>Trwa proces rejestracji...</h2>;
-        }
-        if (id) {
-            return <h2>Twoje konto u numerze <br/> ID: {id} <br/> zostało utworzone.</h2>
-        }
-
-        if (rePassword !== form.password) {
-
-        }
-
         try {
-
-
             const res = await fetch(`${apiUrl}/user/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...form,
+                    ...respondeData,
                 }),
             });
 
-            const data = await res.json();
+            const dataForm = await res.json();
 
-            setId(data.id);
+            setId(dataForm.id);
         } finally {
             setLoading(false);
         }
-
     }
 
+    if (loading) {
+        return <h2>Trwa proces rejestracji...</h2>;
+    }
+    if (id) {
+        return <h2>Twoje konto u numerze <br/> ID: {id} <br/> zostało utworzone.</h2>
+    }
 
     return (
         <Container className={'w-50'}>
@@ -92,9 +59,7 @@ const RegisterAnnouncement = () => {
                         Nazwa użytkownika:
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="text" placeholder="nazwa użytkownika" name={'username'}
-                                      value={form.username}
-                                      onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                        <Form.Control type="text" placeholder="nazwa użytkownika" {...register('username')}/>
                     </Col>
                 </Form.Group>
 
@@ -103,8 +68,7 @@ const RegisterAnnouncement = () => {
                         Email:
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="email" placeholder="Email" name={'email'} value={form.email}
-                                      onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                        <Form.Control type="email" placeholder="Email" {...register('email')}/>
                     </Col>
                 </Form.Group>
 
@@ -113,8 +77,8 @@ const RegisterAnnouncement = () => {
                         Hasło:
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="password" placeholder="Hasło" name={'password'}
-                                      ref={register<RegisterOptions>({
+                        <Form.Control type="password" placeholder="Hasło"
+                                      {...register('password', {
                                           required: "You must specify a password",
                                           minLength: {
                                               value: 8,
@@ -130,8 +94,11 @@ const RegisterAnnouncement = () => {
                         Powtórz Hasło:
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="password" placeholder="Powtórz Hasło" name={'RePassword'} value={rePassword}
-                                      onChange={e => (setRePassword(e.target.value))}/>
+                        <Form.Control type="password" placeholder="Powtórz Hasło" {...register('RePassword', {
+                            validate: value =>
+                                value === password.current || "The passwords do not match"
+                        })}/>
+                        {errors.RePassword && <p>{errors.RePassword.message}</p>}
                     </Col>
                 </Form.Group>
 
