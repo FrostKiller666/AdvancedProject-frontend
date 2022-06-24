@@ -17,7 +17,7 @@ const LoginAnnouncement = () => {
         setLoading(true);
 
         try {
-            const res = await fetch(`${apiUrl}/user/login`, {
+            const res = await fetch(`${apiUrl}/user/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

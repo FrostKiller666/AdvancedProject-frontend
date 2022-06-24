@@ -23,7 +23,7 @@ const App = () => {
                 <Routes>
                     <Route path={'/'} element={<Map/>}/>
                     <Route path={'/add'} element={<AddAnnouncement/>}/>
-                    <Route path={'/user/login'} element={<LoginAnnouncement/>}/>
+                    <Route path={'/user/auth/login'} element={<LoginAnnouncement/>}/>
                     <Route path={'/user/register'} element={<RegisterAnnouncement/>}/>
                 </Routes>
             </SearchContext.Provider>
