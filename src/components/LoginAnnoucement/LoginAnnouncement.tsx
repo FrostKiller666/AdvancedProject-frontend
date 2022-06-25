@@ -1,19 +1,28 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
+
 import {apiUrl} from "../../config/api";
+import {SearchContext} from "../../contexts/search.context";
 
 interface FormRegisterType {
     email: string;
     password: string;
 }
 
+interface ResDataUser {
+    logged: boolean;
+    userId: string;
+}
+
 const LoginAnnouncement = () => {
     const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
+    const {setLogged} = useContext(SearchContext);
+    const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
-
         setLoading(true);
 
         try {
@@ -27,9 +36,13 @@ const LoginAnnouncement = () => {
                 }),
             });
 
-            const dataLogin = await res.json();
+            const dataLogin: ResDataUser = await res.json();
 
-            console.log(dataLogin);
+            if (dataLogin.logged) {
+                setLogged(true);
+                navigate(`/user/${dataLogin.userId}`)
+            }
+
         } finally {
             setLoading(false);
         }

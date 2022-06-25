@@ -7,15 +7,15 @@ import {SearchContext} from "../../contexts/search.context";
 import classes from "./Header.module.css";
 import {Link} from "react-router-dom";
 
+
 const Header = () => {
     const {setSearch} = useContext(SearchContext);
     const [inputValue, setInputValue] = useState('');
 
-    const setSearchFormLocalState = (e: SyntheticEvent) => {
+    const setSearchFormLocalState = async (e: SyntheticEvent) => {
         e.preventDefault();
         setSearch(inputValue);
     }
-
 
     return (
         <Navbar variant="dark" bg="dark" expand="lg" className={classes.customContainer}>

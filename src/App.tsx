@@ -8,18 +8,22 @@ import {SearchContext} from "./contexts/search.context";
 import {AddAnnouncement} from "./components/AddAnnouncement/AddAnnouncement";
 import {LoginAnnouncement} from "./components/LoginAnnoucement/LoginAnnouncement";
 import {RegisterAnnouncement} from "./components/RegisterAnnouncement/RegisterAnnouncement";
+import {HeaderUser} from "./components/layout/HeaderUser";
 
 
 const App = () => {
     const [search, setSearch] = useState('');
-
+    const [logged, setLogged] = useState(false);
     return (
         <>
             <SearchContext.Provider value={{
                 search,
-                setSearch
+                setSearch,
+                logged,
+                setLogged,
             }}>
-                <Header/>
+                {logged && <HeaderUser/>}
+                {!logged && <Header/>}
                 <Routes>
                     <Route path={'/'} element={<Map/>}/>
                     <Route path={'/add'} element={<AddAnnouncement/>}/>
