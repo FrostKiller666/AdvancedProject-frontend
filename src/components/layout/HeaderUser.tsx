@@ -41,7 +41,7 @@ const HeaderUser = () => {
                             menuVariant="dark"
                         >
                             <NavDropdown.Item as={Link} to='/user/YourAccount'>Zmień hasło</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/'>Twoje Ogłoszenia</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/user/announcement'>Twoje Ogłoszenia</NavDropdown.Item>
                             <NavDropdown.Divider/>
                             <NavDropdown.Item as={Link} onClick={logoutHandler} to='/'>Wyloguj</NavDropdown.Item>
                         </NavDropdown>

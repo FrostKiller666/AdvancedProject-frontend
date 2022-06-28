@@ -31,7 +31,7 @@ const App = () => {
                     <Route path={'/user/auth/login'} element={<LoginAnnouncement/>}/>
                     <Route path={'/user/register'} element={<RegisterAnnouncement/>}/>
                     <Route path={'/user/YourAccount'} element={<UserPersonalDataAnnouncement/>}/>
-                    <Route path={'/user/'} element={<UserAnnouncement/>}/>
+                    <Route path={'/user/announcement'} element={<UserAnnouncement/>}/>
                 </Routes>
             </SearchContext.Provider>
         </>

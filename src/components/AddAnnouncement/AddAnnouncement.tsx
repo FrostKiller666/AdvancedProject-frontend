@@ -29,10 +29,10 @@ const AddAnnouncement = () => {
 
         try {
             const {lat, lon} = await geocoding(form.postalCode, form.city, form.streetAddress, form.numberStreet);
-            await axios.get(`${apiUrl}/user/authenticate`, {
+            const resAuthData = await axios.get(`${apiUrl}/user/authenticate`, {
                 withCredentials: true,
             });
-
+            const username = await resAuthData.data.id;
             const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
                 headers: {
@@ -41,7 +41,8 @@ const AddAnnouncement = () => {
                 body: JSON.stringify({
                     ...form,
                     lat,
-                    lon
+                    lon,
+                    username
                 }),
             });
 

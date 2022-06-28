@@ -11,12 +11,13 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <CookiesProvider>
-                <App/>
-            </CookiesProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+    //Triger twice my useeffect fetch StricMode
+    //<React.StrictMode>
+    <BrowserRouter>
+        <CookiesProvider>
+            <App/>
+        </CookiesProvider>
+    </BrowserRouter>
+    //</React.StrictMode>
 );
 
