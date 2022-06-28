@@ -31,7 +31,8 @@ const AddAnnouncement = () => {
             const {lat, lon} = await geocoding(form.postalCode, form.city, form.streetAddress, form.numberStreet);
             await axios.get(`${apiUrl}/user/authenticate`, {
                 withCredentials: true,
-            })
+            });
+
             const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
                 headers: {
