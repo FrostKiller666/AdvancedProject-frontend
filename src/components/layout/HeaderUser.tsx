@@ -6,17 +6,22 @@ import {SearchContext} from "../../contexts/search.context";
 
 import classes from "./Header.module.css";
 import {Link} from "react-router-dom";
+import {useCookies} from "react-cookie";
 
 
 const HeaderUser = () => {
     const {setSearch} = useContext(SearchContext);
     const [inputValue, setInputValue] = useState('');
+    const [cookies, setCookie, removeCookie] = useCookies();
 
     const setSearchFormLocalState = (e: SyntheticEvent) => {
         e.preventDefault();
         setSearch(inputValue);
     }
 
+    const logoutHandler = () => {
+        removeCookie('JWT');
+    }
 
     return (
         <Navbar variant="dark" bg="dark" expand="lg">
@@ -38,7 +43,7 @@ const HeaderUser = () => {
                             <NavDropdown.Item as={Link} to='/'>Twoje Dane</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to='/'>Twoje Ogłoszenia</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item as={Link} to='/'>Wyloguj</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} onClick={logoutHandler} to='/'>Wyloguj</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

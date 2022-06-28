@@ -1,10 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
+import {useCookies} from 'react-cookie';
 
 import {apiUrl} from "../../config/api";
-import {SearchContext} from "../../contexts/search.context";
 
 interface FormRegisterType {
     email: string;
@@ -14,14 +14,15 @@ interface FormRegisterType {
 interface ResDataUser {
     logged: boolean;
     userId: string;
+    accessToken: string;
 }
 
 const LoginAnnouncement = () => {
     const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
-    const {setLogged} = useContext(SearchContext);
-    const navigate = useNavigate();
+    const [cookies, setCookie] = useCookies(['JWT']);
 
+    const navigate = useNavigate();
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
         setLoading(true);
 
@@ -39,8 +40,11 @@ const LoginAnnouncement = () => {
             const dataLogin: ResDataUser = await res.json();
 
             if (dataLogin.logged) {
-                setLogged(true);
-                navigate(`/user/${dataLogin.userId}`)
+                setCookie('JWT', dataLogin.accessToken, {
+                    path: '/',
+                    maxAge: 7 * 24 * 60 * 60,
+                })
+                navigate(`/`)
             }
 
         } finally {

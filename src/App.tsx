@@ -9,26 +9,27 @@ import {AddAnnouncement} from "./components/AddAnnouncement/AddAnnouncement";
 import {LoginAnnouncement} from "./components/LoginAnnoucement/LoginAnnouncement";
 import {RegisterAnnouncement} from "./components/RegisterAnnouncement/RegisterAnnouncement";
 import {HeaderUser} from "./components/layout/HeaderUser";
-
+import {UserAnnouncement} from "./components/UserAnnouncement/UserAnnouncement";
+import {useCookies} from "react-cookie";
 
 const App = () => {
     const [search, setSearch] = useState('');
-    const [logged, setLogged] = useState(false);
+    const [cookies, setCookie] = useCookies();
+
     return (
         <>
             <SearchContext.Provider value={{
                 search,
                 setSearch,
-                logged,
-                setLogged,
             }}>
-                {logged && <HeaderUser/>}
-                {!logged && <Header/>}
+                {cookies.JWT && <HeaderUser/>}
+                {!cookies.JWT && <Header/>}
                 <Routes>
                     <Route path={'/'} element={<Map/>}/>
                     <Route path={'/add'} element={<AddAnnouncement/>}/>
                     <Route path={'/user/auth/login'} element={<LoginAnnouncement/>}/>
                     <Route path={'/user/register'} element={<RegisterAnnouncement/>}/>
+                    <Route path={'/user/'} element={<UserAnnouncement/>}/>
                 </Routes>
             </SearchContext.Provider>
         </>
