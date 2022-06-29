@@ -4,6 +4,7 @@ import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {CustomButton} from "../UI/CustomButton";
 import {SearchContext} from "../../contexts/search.context";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from "./Header.module.css";
 import {Link} from "react-router-dom";
 
@@ -18,12 +19,10 @@ const Header = () => {
     }
 
     return (
-        <Navbar variant="dark" bg="dark" expand="lg" className={classes.customContainer}>
+        <Navbar variant="dark" bg="dark" expand="md" className={classes.customContainer}>
             <Container fluid>
-
                 <Navbar.Brand as={Link} to='/'><strong>Mega</strong> Ogłoszenia</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbar-dark-example"/>
-                <Navbar.Collapse id="navbar-dark-example">
+                <Navbar.Collapse id="navbar-dark-example" className={classes.collapse}>
                     <form className={classes.search} onSubmit={setSearchFormLocalState}>
                         <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
                         <CustomButton type={"submit"}>Szukaj</CustomButton>

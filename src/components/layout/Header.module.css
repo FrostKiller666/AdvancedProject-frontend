@@ -13,6 +13,7 @@ header h1 {
 
 .search {
     display: flex;
+    height: 2.4rem;
 }
 
 .search input {
@@ -52,6 +53,8 @@ input
 .userIcon {
     width: 2.4rem;
     height: 2.4rem;
+
+
 }
 
 .customContainer {
@@ -60,7 +63,11 @@ input
 }
 
 .customDropDown {
-    margin-left: 43rem;
+
 }
 
-
+.collapse {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: space-between !important;
+}

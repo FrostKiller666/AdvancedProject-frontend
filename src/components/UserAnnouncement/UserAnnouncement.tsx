@@ -6,10 +6,10 @@ import {apiUrl} from "../../config/api";
 
 const UserAnnouncement = () => {
     const [loading, setLoading] = useState(false);
-    const [listAnnouncement, setListAnnouncement] = useState<AnnouncementsForUser[] | null>(null);
+    const [listAnnouncement, setListAnnouncement] = useState<AnnouncementsForUser[] | null>([]);
     const [username, setUsername] = useState('');
-    useEffect(() => {
 
+    useEffect(() => {
         (async () => {
             try {
                 setLoading(true);
@@ -29,6 +29,7 @@ const UserAnnouncement = () => {
                     }),
                 });
                 const listAnnouncementsOfUser = await res.json();
+
                 setListAnnouncement(listAnnouncementsOfUser);
 
             } finally {

@@ -76,11 +76,13 @@ const AddAnnouncement = () => {
 
 
             <form action={''} className="row g-3 " onSubmit={AddAdToMap}>
-            <h2>Dodaj swoje ogłsozenie:</h2>
+            <h2 className={classes.h2}>Dodaj swoje ogłsozenie:</h2>
                 <div className="col-md-6 ">
 
-                <label htmlFor='name'>Nazwa:</label> <input type="text" id='name' className="form-control" size={40} name={'name'} required maxLength={99} minLength={1} value={form.name}
-                           onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
+                    <label htmlFor='name'>Nazwa:</label> <input type="text" id='name' className="form-control" size={40}
+                                                                name={'name'} required maxLength={99} minLength={1}
+                                                                value={form.name}
+                                                                onChange={e => (formChangeHandler(e.target.name, e.target.value))}/>
                 </div>
 
                 <div className="col-md-6 ">
